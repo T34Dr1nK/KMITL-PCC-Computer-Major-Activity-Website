@@ -41,7 +41,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   phpmyadmin:
-    # อาจจะใช้ prisma
+    # อาจจะใช้ prisma 
     image: phpmyadmin:latest
     container_name: phpmyadmin
     depends_on:
@@ -53,4 +53,4 @@ services:
       - "8080:80"
 
 volumes:
-  mysql-data:
+  mysql-data:  
