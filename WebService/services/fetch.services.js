@@ -1,5 +1,10 @@
 const connection = require("./dbconn");
 
+connection.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected to mySQL");
+});
+
 const FetchService = {
   getAllData: async (tableName1, tableName2) => {
     return new Promise((resolve, reject) => {

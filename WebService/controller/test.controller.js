@@ -16,7 +16,7 @@ const testJWT = (req, res) => {
 const testgenToken = (req, res) => {
     try {
         const user = { id: "12345", email: "test@example.com" };
-        const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
 
         res.json({ token });
     } catch (error) {
