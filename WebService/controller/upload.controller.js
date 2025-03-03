@@ -13,9 +13,12 @@ const uploadActivity = async (req, res) => {
     try {
         console.log("Received Request:", req.body);
 
-        const { Activity_Name, ACT_DESC, DATE_MADE, Place, Pin, Type_ID, Cover_Picture, Picture } = req.body;
+        const {
+            ACT_ID,ACT_Name,ACT_DESC,DATE_MADE,Place,Cover_Picture,Pin,TYPE_ID,Advisor} = req.body;
+      
+          const images = req.files || [];
 
-        if (!Activity_Name || !ACT_DESC || !DATE_MADE || !Place || !Pin || !Type_ID) {
+        if (!ACT_DESC || !ACT_Name || !ACT_ID || !ACT_Name || !ACT_DESC || !DATE_MADE || !Place || !Pin || !TYPE_ID || !Advisor) {
             console.log(" Missing fields");
             return res.status(400).json({ message: "All fields are required" });
         }
@@ -30,10 +33,10 @@ const uploadActivity = async (req, res) => {
         console.log("Pictures:", pictures);
         console.log(" Preparing SQL Query...");
 
-        const sql = `INSERT INTO Activity (Activity_Name, ACT_DESC, DATE_MADE, Place, Cover_Picture, Picture, Pin, Type_ID) 
-                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+        const sql = `INSERT INTO Activity (ACT_ID,ACT_Name,ACT_DESC,DATE_MADE,Place,Cover_Picture,Pin,TYPE_ID,Advisor) 
+                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-        executeQuery(sql, [Activity_Name, ACT_DESC, DATE_MADE, Place, coverPicture, pictureJson, Pin, Type_ID]);
+        executeQuery(sql, [ACT_Name, ACT_DESC, DATE_MADE, Place, coverPicture, pictureJson, Pin, TYPE_ID,Advisor]);
 
         console.log(" Database Insert Success");
         res.status(201).json({ message: "Activity uploaded successfully" });
