@@ -1,3 +1,4 @@
+/* -------------------------------------------- NAVBAR -------------------------------------------- */
 .navbar {
     background: linear-gradient(to right,#162542,#294881);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -13,13 +14,13 @@
 .hidden {
     transform: translateY(-100%); /* ซ่อน navbar */
     transition: transform 0.3s ease-in-out;
-  }
+}
 
 .navbar-brand img {
     height: 100px; 
     width: auto; 
     margin-top: -10px;
-  }
+}
 
 .upload{
     color: #ed7d31;
@@ -50,14 +51,14 @@
     font-family: 'Arial', sans-serif;  
     font-size: 18px; 
     color: #ed7d31 !important;  
-  }
+}
 
 .navbar-toggler {
     border: none ; 
     background: none ; 
     box-shadow: none ; 
     outline: none ; 
-  }
+}
 
 .navbar-toggler-icon {
     padding: 30px;
@@ -79,7 +80,7 @@
     color: #203864;
 }
 
-
+/* ---------------------------------------- Sidebar ---------------------------------------- */
 .offcanvas{
     background-color: #203864;
     display: flex;
@@ -101,18 +102,21 @@ html, body {
     overflow-x: hidden;
 }
 
+/* -------------------------------------------- BODY -------------------------------------------- */
+
+/* ---------- Background ---------- */
 body {
     height: 100vh; 
     margin: 0;
     padding: 0;
     background: url('../../assets/Background.jpg') center/cover no-repeat;
     color: white;
-    font-family: 'Arial', sans-serif;
     background-size: cover;
     background-position: center; 
     background-attachment: fixed;
 }
 
+/* ---------- พื้นหลังเบลอ ---------- */
 .form-container {
     background: rgba(0, 0, 0, 0.95) !important;
     padding: 20px;
@@ -126,7 +130,8 @@ body {
     opacity: 1 !important;
 }
 
-.form-label1{
+/* ---------- ช่องกรอกข้อมูลต่างๆ ---------- */
+.form-label{
     font-size: 20px;
 }
 
@@ -160,14 +165,12 @@ body {
     color: white;
 }
 
+/* ---------- ช่องกรอกชื่อกิจกรรม ---------- */
 .event-title{
     margin-bottom: 20px;
 }
 
-.form-label2{
-    font-size: 20px;
-}
-
+/* ---------- ช่องอัพโหลดรูปภาพ ---------- */
 .upload-image{
     margin-bottom: 30px;
 }
@@ -179,14 +182,12 @@ body {
     margin-bottom: 30px;
 }
 
-.form-label3{
-    font-size: 20px;
-}
-
+/* ---------- ช่องกรอกเนื้อหาข่าวสารและกิจกรรม ---------- */
 .event-description .form-control{
     margin-bottom: 20px;
 }
 
+/* ---------- text editor ---------- */
 .ql-container {
     background: #ffffff !important;  
     border: 1px solid #ccc !important;  
@@ -222,20 +223,7 @@ body {
     backdrop-filter: none !important;  
 }
 
-.form-container {
-    background: rgba(255, 255, 255, 0.2) !important; /* พื้นหลังโปร่งแสง */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    opacity: 1 !important;
-    backdrop-filter: blur(10px) !important; /* ทำให้พื้นหลังเบลอ */
-    -webkit-backdrop-filter: blur(10px) !important; /* รองรับ Safari */
-}
-
-.form-label6{
-    font-size: 20px;
-}
-
+/* ---------- ช่องพรีวิวรูปภาพที่อัพเดทเพิ่มเติม ---------- */
 .image-preview {
     display: flex;
     flex-wrap: wrap;
@@ -248,26 +236,17 @@ body {
     object-fit: cover;
 }
 
-.form-label4{
-    font-size: 20px;
-}
-
+/* ---------- ช่องกรอกสถานที่ ---------- */
 .event-location .form-control{
     margin-bottom: 20px;
 }
 
-.form-label5{
-    font-size: 20px;
-}
-
+/* ---------- ช่องกรอกอาจารย์ที่ปรึกษา ---------- */
 .advisor-name .form-control{
     margin-bottom: 20px;
 }
 
-.form-label6{
-    font-size: 20px;
-}
-
+/* ---------- เลือกประเภท ---------- */
 .event-type{
     margin-bottom: 20px;
 }
@@ -292,6 +271,7 @@ body {
     margin-bottom: 10px;  
 }
 
+/* ---------- ปุ่มอัปโหลด ---------- */
 .btn-submit {
     background-color: #00b300; 
     color: white;

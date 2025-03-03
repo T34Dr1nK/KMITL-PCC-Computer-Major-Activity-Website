@@ -3,6 +3,7 @@ const FetchService = require("../services/fetch.services");
 async function getAllActivities(req, res) {
   try {
     const activities = await FetchService.getAllData("Activity","TYPE_HAVE");
+    console.log("Fetch complete");
     res.status(200).json(activities);
   } catch (error) {
     console.error("Error fetching activities:", error);
@@ -18,7 +19,7 @@ async function getActivityById(req, res) {
     if (!activity) {
       return res.status(404).json({ message: "Activity not found" });
     }
-
+    console.log("Fetch complete");
     res.status(200).json(activity);
   } catch (error) {
     console.error("Error fetching activity:", error);

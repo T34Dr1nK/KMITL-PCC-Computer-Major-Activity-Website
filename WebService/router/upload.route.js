@@ -9,6 +9,7 @@ router.post("/", upload.fields([
     { name: "Cover_Picture", maxCount: 1 },  // Single cover image
     { name: "Picture", maxCount: 5 } // Multiple pictures (max 5)
 ]), uploadActivity);
+
 router.post("/upload", uploadActivity);
 
 router.post('/upload', async (req, res) => {

@@ -25,4 +25,24 @@ const testgenToken = (req, res) => {
     }
 };
 
-module.exports = { testSys, testJWT, testgenToken };
+const imgtest = (req, res) => {
+  try {
+
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+  
+    res.json({
+      message: "File uploaded successfully",
+      filePath: `/uploads/${req.file.filename}`,
+    });
+
+  } catch (error) {
+    
+    res.status(500).json({ message: "Error Uploading Image" });
+
+  }
+
+}
+
+module.exports = { testSys, testJWT, testgenToken, imgtest };

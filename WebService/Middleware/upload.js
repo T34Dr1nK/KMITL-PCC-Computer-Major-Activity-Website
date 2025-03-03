@@ -1,18 +1,27 @@
 const multer = require("multer");
 const path = require("path");
 
-// ตั้งค่าที่เก็บไฟล์
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "uploads/"); // ไฟล์จะถูกเก็บที่โฟลเดอร์ uploads/
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // เปลี่ยนชื่อไฟล์กันซ้ำ
-    }
+  destination: "./assets/uploads/",
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+  },
 });
 
-// ใช้ multer middleware
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: (req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png|gif/;
+    const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimeType = fileTypes.test(file.mimetype);
 
-// ส่งออก middleware
+    if (mimeType && extName) {
+      return cb(null, true);
+    } else {
+      cb(new Error("Only images are allowed"));
+    }
+  },
+});
+
 module.exports = upload;

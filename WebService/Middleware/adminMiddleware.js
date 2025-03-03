@@ -10,6 +10,7 @@ const adminMiddleware = (req, res, next) => {
     }
   
     console.log(`Admin access granted: ${req.user.email}`);
+    res.status(200).json({ message: "Admin access granted!" ,role:req.user.role})
     next();
   };
   
