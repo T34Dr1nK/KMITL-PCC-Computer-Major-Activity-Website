@@ -43,7 +43,7 @@
   align-self: flex-start;
   top: 20px;
   left: 40px;
-  width: 40%;
+  width: 25%;
 }
 
 /* TITLE */
@@ -110,8 +110,7 @@ input-group:hover,
 }
 
 /* Button */
-.btn-login,
-.btn-signup {
+.btn-login {
   width: 100%;
   max-width: 1600px;
   padding: 12px 50px;
@@ -132,6 +131,20 @@ input-group:hover,
   background: var(--dorpdown-set);
   transform: scale(1.05);
 }
+
+.btn-signup {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid var(--body-color);
+    border-radius: 30px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--body-color);
+    transition: all 0.3s ease;
+  }
 
 .btn-signup {
   background: transparent;

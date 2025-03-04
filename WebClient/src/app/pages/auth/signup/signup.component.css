@@ -1,6 +1,7 @@
 /* Set styles Sign-Up page */
 .signup-page {
   display: flex;
+  flex-direction: row-reverse; 
   font-family: var(--main-font);
   height: 100vh;
   width: 100%;
@@ -42,32 +43,37 @@
 /* LOGO */
 .signup-logo {
   position: absolute;
-  top: 30px;
-  left: 30px;
-  width: 150px;
+  align-self: flex-start;
+  top: 20px;
+  left: 40px;
+  width: 25%;
+}
+
+.signup-form h2{
+  margin-top: 80px;
 }
 
 /* TITLE */
 h2 {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .welcome-container h2 {
-  font-size: 32px;
   font-weight: bold;
   color: var(--tertiary-color);
+  text-align: center;
   margin-bottom: 10px;
 }
 
 .welcome-container p {
-  font-size: 18px;
+  font-size: 22px;
   color: var(--secondary-color);
+  text-align: center;
   margin-bottom: 40px;
-  max-width: 80%;
 }
 
 .signup-check {
@@ -77,28 +83,33 @@ h2 {
 /* Input box */
 .input-group {
   display: flex;
-  align-items: center;
+  align-items: center; 
   background: var(--body-color);
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 15px;
   margin: 10px 0px;
   width: 100%;
-  max-width: 450px;
 }
 
 .input-group i {
   font-size: 20px;
   margin-right: 12px;
   color: var(--primary-color);
+  flex-shrink: 0; /* ป้องกันไม่ให้ไอคอนหดตัว */
 }
 
 .input-group input {
-  width: 100%;
+  flex-grow: 1; /* ให้ input ขยายตัว */
   border: none;
   background: none;
   outline: none;
   font-size: 18px;
   padding: 5px;
+}
+
+input-group:hover,
+.input-group:focus-within {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Error Text */
@@ -113,21 +124,22 @@ h2 {
 /* Button */
 .btn-signup {
   width: 100%;
-  max-width: 450px;
-  padding: 15px;
-  font-size: 22px;
+  max-width: 1600px;
+  padding: 12px 50px;
+  font-size: 24px;
   font-weight: bold;
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  transition: all 0.3s ease;
   background: var(--primary-color);
   color: var(--body-color);
-  transition: all 0.3s ease;
-  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .btn-signup:hover {
-  background: var(--show-post-background);
+  background: var(--dorpdown-set);
   transform: scale(1.05);
 }
 
@@ -147,7 +159,8 @@ h2 {
 }
 
 .btn-login:hover {
-  background: var(--dropdown-set);
+  background: var(--show-post-background);
+  color: var(--primary-color);
   transform: scale(1.05);
 }
 

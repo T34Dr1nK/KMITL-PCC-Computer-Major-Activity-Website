@@ -121,54 +121,43 @@ export class UpPostComponent implements OnInit, AfterViewInit, AfterViewChecked 
 
   submitForm() {
     if (this.eventForm.invalid) {
-      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+      alert("กรุณากรอกข้อมูลให้ครบถ้วน");
       return;
     }
   
-    const formDataJson = {
-      title: this.eventForm.get('title')?.value,
-      description: this.eventForm.get('description')?.value,
-      location: this.eventForm.get('location')?.value,
-      advisor: this.eventForm.get('advisor')?.value,
-      type: this.eventForm.get('type')?.value,
-      eventDate: this.eventForm.get('eventDate')?.value, 
-      mainImage: this.mainImage ? this.mainImage.name : null, 
-      additionalImages: this.additionalImages.map(file => file.name)
-    };  
+    const formData = new FormData();
+    formData.append("title", this.eventForm.get("title")?.value);
+    formData.append("description", this.eventForm.get("description")?.value);
+    formData.append("location", this.eventForm.get("location")?.value);
+    formData.append("advisor", this.eventForm.get("advisor")?.value);
+    formData.append("type", this.eventForm.get("type")?.value === "event" ? "1" : "2");
+    formData.append("eventDate", this.eventForm.get("eventDate")?.value);
   
-    //if (this.mainImage) {
-    //  formData.append('mainImage', this.mainImage);
-    //}
+    if (this.mainImage) {
+      formData.append("mainImage", this.mainImage);
+    } else {
+      alert("Cover image is required.");
+      return;
+    }
   
-    //this.additionalImages.forEach((file, index) => {
-    //  formData.append(`additionalImages[${index}]`, file);
-    //});
-  
-    console.log('Form Data:', {
-      title: this.eventForm.get('title')?.value,
-      description: this.eventForm.get('description')?.value,
-      location: this.eventForm.get('location')?.value,
-      advisor: this.eventForm.get('advisor')?.value,
-      type: this.eventForm.get('type')?.value,
-      eventDate: this.eventForm.get('eventDate')?.value,
-      mainImage: this.mainImage,
-      additionalImages: this.additionalImages
+    this.additionalImages.forEach((file, index) => {
+      formData.append(`additionalImages`, file);
     });
-
-    // Comment out the API call for now
-    // this.sendDataToAPI(formData);
-  }
-
-  sendDataToAPI(formData: FormData) {
-    this.http.post('https://your-api-url.com/upload', formData).subscribe(
-      response => {
-        console.log('ส่งข้อมูลสำเร็จ:', response);
-        alert('ส่งข้อมูลสำเร็จ!');
+  
+    for (let pair of formData.entries()) {
+      console.log(`${pair[0]}:`, pair[1]);
+    }
+  
+    this.http.post("http://localhost:3000/upload/activity", formData).subscribe(
+      (response) => {
+        console.log("ส่งข้อมูลสำเร็จ:", response);
+        alert("ส่งข้อมูลสำเร็จ!");
       },
-      error => {
-        console.error('เกิดข้อผิดพลาด:', error);
-        alert('เกิดข้อผิดพลาดในการส่งข้อมูล');
+      (error) => {
+        console.error("เกิดข้อผิดพลาด:", error);
+        alert(`เกิดข้อผิดพลาดในการส่งข้อมูล: ${error.message}`);
       }
     );
   }
+  
 }
