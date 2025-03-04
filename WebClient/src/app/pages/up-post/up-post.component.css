@@ -1,0 +1,310 @@
+.navbar {
+    background: linear-gradient(to right,#162542,#294881);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: start; 
+    gap: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    height: 120px;
+}
+
+.hidden {
+    transform: translateY(-100%); /* ซ่อน navbar */
+    transition: transform 0.3s ease-in-out;
+  }
+
+.navbar-brand img {
+    height: 100px; 
+    width: auto; 
+    margin-top: -10px;
+  }
+
+.upload{
+    color: #ed7d31;
+    font-size: 1.5rem;
+}
+
+.home{
+    color: #152440;
+    font-size: 1.5rem;
+    margin-left: 30px;
+    margin-right: 100px;
+}
+
+.navbar-toggler{
+    border: none ; 
+    background: none ; 
+    box-shadow: none ; 
+    outline: none ;
+}
+
+.navbar-toggler-icon{
+    padding: 30px;
+    filter: brightness(0) invert(1);
+    color: black;
+}
+
+.nav-link {
+    font-family: 'Arial', sans-serif;  
+    font-size: 18px; 
+    color: #ed7d31 !important;  
+  }
+
+.navbar-toggler {
+    border: none ; 
+    background: none ; 
+    box-shadow: none ; 
+    outline: none ; 
+  }
+
+.navbar-toggler-icon {
+    padding: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23203864' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-brand{
+    height: 100px;
+    width: 100px;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.navbar-brand span{
+    font-weight: 600;
+    font-size: 2rem;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #203864;
+}
+
+
+.offcanvas{
+    background-color: #203864;
+    display: flex;
+}
+
+.nav-item{
+    font-weight: 600;
+    font-size: 1.25rem;
+    top: -10px;
+}
+
+.nav-item a{
+    color: #ffff !important;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    height: 100vh; 
+    margin: 0;
+    padding: 0;
+    background: url('../../../assets/Background.jpg') center/cover no-repeat;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed;
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.95) !important;
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(30px) !important;
+    margin: 50px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8) !important;  
+    margin-top: 150px;
+    width: 1000px; 
+    height: auto;
+    opacity: 1 !important;
+}
+
+.form-label1{
+    font-size: 20px;
+}
+
+.form-group{
+    margin-bottom: 1.5rem;
+}
+
+.char-limit {
+    color: #ed7d31;
+    font-size: 12px;
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    box-shadow: none; 
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white; 
+    box-shadow: none; 
+    color: white;
+}
+
+.event-title{
+    margin-bottom: 20px;
+}
+
+.form-label2{
+    font-size: 20px;
+}
+
+.upload-image{
+    margin-bottom: 30px;
+}
+
+.upload-image .form-control {
+    width: 50%; 
+    max-width: 300px; 
+    display: block;
+    margin-bottom: 30px;
+}
+
+.form-label3{
+    font-size: 20px;
+}
+
+.event-description .form-control{
+    margin-bottom: 20px;
+}
+
+.ql-container {
+    background: #ffffff !important;  
+    border: 1px solid #ccc !important;  
+    border-radius: 5px;
+    min-height: 300px;  
+    opacity: 1 !important;  
+}
+
+.ql-editor {
+    background: #ffffff !important;  
+    color: black !important;  
+    font-family: Arial, sans-serif !important;  
+    font-size: 16px;  
+    line-height: 1.5;  
+    padding: 10px;  
+    border-radius: 5px;
+    min-height: 300px;  
+}
+
+.ql-toolbar {
+    background: #f1f1f1 !important;  
+    border: 1px solid #ccc !important;  
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.ql-toolbar button {
+    color: black !important;  
+}
+
+.ql-container, .ql-editor, .ql-toolbar {
+    opacity: 1 !important;  
+    backdrop-filter: none !important;  
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.2) !important; /* พื้นหลังโปร่งแสง */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 1 !important;
+    backdrop-filter: blur(10px) !important; /* ทำให้พื้นหลังเบลอ */
+    -webkit-backdrop-filter: blur(10px) !important; /* รองรับ Safari */
+}
+
+.form-label6{
+    font-size: 20px;
+}
+
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-preview img {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    object-fit: cover;
+}
+
+.form-label4{
+    font-size: 20px;
+}
+
+.event-location .form-control{
+    margin-bottom: 20px;
+}
+
+.form-label5{
+    font-size: 20px;
+}
+
+.advisor-name .form-control{
+    margin-bottom: 20px;
+}
+
+.form-label6{
+    font-size: 20px;
+}
+
+.event-type{
+    margin-bottom: 20px;
+}
+
+.event-type .form-check-label {
+    font-size: 20px;
+}
+
+.form-check {
+    margin-bottom: 50px;  
+}
+
+.form-check input[type="radio"] {
+    margin-right: 10px;  
+}
+
+.form-check div {
+    font-size: 18px; 
+}
+
+.form-check input[type="radio"]:not(:last-child) {
+    margin-bottom: 10px;  
+}
+
+.btn-submit {
+    background-color: #00b300; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-submit:hover {
+    background-color: #008000; 
+}
+
+.upload-button {
+    text-align: right;
+}

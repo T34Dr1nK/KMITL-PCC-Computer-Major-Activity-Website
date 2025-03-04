@@ -93,6 +93,7 @@ h2 {
 }
 
 .input-group input {
+  flex: 1;
   width: 100%;
   border: none;
   background: none;

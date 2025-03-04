@@ -1,1 +1,110 @@
-<p>up-post works!</p>
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/quill/dist/quill.snow.css" rel="stylesheet">
+
+<!-- Navbars -->
+<nav class="navbar bg-body-tertiary fixed-top" [ngClass]="{'hidden': !navbarVisible}">
+  <div div class="container-fluid d-flex align-items-center">
+
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="../../assets/CE-LOGO-White.png" alt="Logo" width="200px" height="100px" class="Logo">
+    </a>
+
+    <!-- ปุ่ม Search และ Hamburger -->
+    <div class="d-flex ms-auto align-items-center">
+      <!-- Hamburger -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <!-- Side bar (ย้ายมาอยู่ทางขวา) -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <!-- Side bar contain -->
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item"><a class="nav-link" href="#">นักศึกษา & บุคคลากร CE</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">ศิษย์เก่า CE & ITE</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">ครุภัณฑ์การศึกษา CE</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">ฝึกงาน & สหกิจศึกษา</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">ข่าวสาร & กิจกรรมของหลักสูตร</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">หลักสูตร & แผนการเรียน CE</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">แต้มบุญ</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<body>
+  <div class="form-container">
+    <h2 class="title">ข้อมูลกิจกรรม</h2>
+
+    <form [formGroup]="eventForm" (ngSubmit)="submitForm()">
+      <!-- ชื่อกิจกรรม -->
+      <div class="form-group">
+        <label class="form-label1">ระบุชื่อข่าวสารและกิจกรรม</label>
+        <input type="text" class="form-control" formControlName="title" placeholder="กิจกรรม..." required>
+        <p class="char-limit">* พิมพ์ข้อความได้ไม่เกิน 120 ตัวอักษร (0 / 120)</p>
+      </div>
+
+      <!-- อัปโหลดรูปภาพ -->
+      <div class="form-group">
+        <label class="form-label2">อัปโหลดรูปภาพ</label>
+        <input type="file" class="form-control" (change)="onFileChange($event)">
+      </div>
+
+      <!-- คำอธิบาย -->
+      <div class="form-group">
+        <label class="form-label3">เนื้อหาข่าวสารและกิจกรรม</label><br>
+        <quill-editor formControlName="description" [(ngModel)]="eventDescription"
+          [styles]="{ height: '400px' ,width: '950px' }" placeholder="เนื้อหาข่าวสารและกิจกรรม..."
+          [modules]="quillConfig.modules">
+        </quill-editor>
+      </div>
+
+      <!-- อัปโหลดรูปภาพเพิ่มเติม -->
+      <div class="form-group">
+        <label class="form-label6">อัปโหลดรูปภาพเพิ่มเติม</label>
+        <input type="file" class="form-control" (change)="onFileChange($event)" multiple accept="image/*">
+        <p class="char-limit">* กรุณาเลือกรูปภาพไม่เกิน 3 รูป</p>
+      </div>
+
+      <!-- แสดงตัวอย่างภาพที่อัปโหลด -->
+      <div *ngIf="selectedFiles.length > 0">
+        <p>ไฟล์ที่เลือก:</p>
+        <div class="image-preview">
+          <div *ngFor="let file of selectedFiles">
+            <img [src]="getImagePreview(file)" width="100" height="100" style="margin: 5px;">
+          </div>
+        </div><br>
+      </div>
+
+      <!-- สถานที่ -->
+      <div class="form-group">
+        <label class="form-label4">สถานที่:</label>
+        <textarea class="form-control" formControlName="location" rows="3" placeholder="สถานที่จัดกิจกรรม..." required></textarea>
+      </div>
+
+      <!-- อาจารย์ที่ปรึกษา -->
+      <div class="form-group">
+        <label class="form-label5">อาจารย์ที่ปรึกษา:</label>
+        <textarea class="form-control" formControlName="advisor" rows="3" placeholder="อาจารย์ที่ปรึกษา..." required></textarea>
+      </div>
+
+      <!-- ประเภท -->
+      <div class="form-check">
+        <div>
+          <input type="radio" formControlName="type" value="news"> ข่าวสาร <br>
+          <input type="radio" formControlName="type" value="event" checked> กิจกรรม
+        </div>
+      </div>
+
+      <!-- ปุ่มอัปโหลด -->
+      <div class="form-group upload-button">
+        <button type="submit" class="btn-submit">อัปโหลดกิจกรรม</button>
+      </div>
+    </form>
+  </div>
+</body>

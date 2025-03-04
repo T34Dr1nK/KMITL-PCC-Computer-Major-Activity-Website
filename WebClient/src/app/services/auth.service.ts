@@ -14,7 +14,7 @@ export class AuthService {
   private apiUrl = `${environment.apiBaseUrl}/auth`;
   private useMockAPI = environment.useMockAPI;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   // Sign-Up API
   signUp(username: string, email: string, password: string): Observable<any> {
@@ -38,7 +38,7 @@ export class AuthService {
 
     // ✅ API
     return this.http.post<{ message: string }>
-    (`${this.apiUrl}/signup`, { username, email, password })
+      (`${this.apiUrl}/signup`, { username, email, password })
       .pipe(catchError(this.handleError));
   }
 
@@ -56,12 +56,22 @@ export class AuthService {
 
         // Verify if email and password match the stored data
         const user = users.find((u: any) => u.email === email && u.password === password);
-        
+
         if (user) {
           const token = `${user.email}-token`;
           localStorage.setItem('token', token);
           localStorage.setItem('role', 'user.role');
           observer.next({ token, role: 'user.role' });
+          observer.complete();
+        } else if (email === 'admin@example.com' && password === 'admin123') {
+          localStorage.setItem('token', 'admin-token');
+          localStorage.setItem('role', 'admin'); // Admin Role
+          observer.next({ token: 'admin-token', role: 'admin' });
+          observer.complete();
+        } else if (email === 'user@example.com' && password === 'user123') {
+          localStorage.setItem('token', 'user-token');
+          localStorage.setItem('role', 'user'); // User Role
+          observer.next({ token: 'user-token', role: 'user' });
           observer.complete();
         } else {
           console.log('❌ [MockAPI] Login ล้มเหลว: อีเมลหรือรหัสผ่านไม่ถูกต้อง');
@@ -72,12 +82,13 @@ export class AuthService {
   }
 
   // ✅ API
-  private realLogin(email: string, password: string): 
-  Observable<{ token: string; role: string }> {
+  private realLogin(email: string, password: string):
+    Observable<{ token: string; role: string }> {
     return this.http.post<{ token: string; role: string }>
-    (`${this.apiUrl}/login`, { email, password })
+      (`${this.apiUrl}/login`, { email, password })
       .pipe(
         map(response => {
+          console.log('✅ [Real API] Login Response:', response);
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
           return response;
@@ -94,7 +105,6 @@ export class AuthService {
   }
 
   // Check login status
-
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
@@ -107,7 +117,7 @@ export class AuthService {
   // Handle Error Function
   private handleError(error: HttpErrorResponse) {
     let errorMsg = 'เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง';
-  
+
     if (error.error instanceof ErrorEvent) {
       errorMsg = `Client Error: ${error.error.message}`;
     } else if (error.status === 0) {
@@ -115,7 +125,7 @@ export class AuthService {
     } else if (error.error?.message) {
       errorMsg = `Server Error: ${error.error.message}`;
     }
-  
+
     return throwError(() => new Error(errorMsg));
   }
 }

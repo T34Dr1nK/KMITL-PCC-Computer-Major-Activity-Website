@@ -7,13 +7,15 @@ import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { UpPostComponent } from './pages/up-post/up-post.component';  // Up-Post (หน้าสร้างโพสต์)
 import { LoginComponent } from './pages/auth/login/login.component';  // Login Page
 import { SignUpComponent } from './pages/auth/signup/signup.component';  // Signup Page
-//import { AuthGuard } from './services/auth.guard';  // Protect Restricted-Pages
+
+import { AuthGuard } from './guards/auth.guard';  // Import AuthGuard
+import { AdminGuard } from './guards/admin.guard';  // Import AdminGuard
 
 export const routes: Routes = [
   { path: '', component: ShowPostComponent, pathMatch: 'full' },  // Home Page
   { path: 'post/:id', component: PostDetailComponent },  // View post details
-  { path: 'create', component: UpPostComponent },  // Create a new post
-  //{ path: 'edit/:id', component: UpPostComponent },  // Edit post
+  { path: 'create', component: UpPostComponent, canActivate: [AdminGuard] },  // Create a new post
+  { path: 'edit/:id', component: UpPostComponent, canActivate: [AdminGuard]},  // Edit post
 
   // Authentication Pages
   { path: 'login', component: LoginComponent }, // Login

@@ -2,7 +2,7 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { importProvidersFrom } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { routes } from './app.routes';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), // Optimize Change Detection performance
     importProvidersFrom(FormsModule), // FormsModule
     provideRouter(routes), // RouterModule
-    provideHttpClient(), // HTTP Client
+    provideHttpClient(withInterceptorsFromDi()), // HTTP Client
     importProvidersFrom(ReactiveFormsModule)
   ]
 };
