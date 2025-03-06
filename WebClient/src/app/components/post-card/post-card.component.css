@@ -64,7 +64,7 @@
 
 /* Effect for pinned posts  */
 .post-card.pinned {
-  border: 1px solid gold;
+  border: 3px solid var(--highlight-color);
 }
 
 /* ⭐ */
@@ -73,7 +73,7 @@
   top: 10px;
   right: 10px;
   font-size: 24px;
-  color: gold;
+  color: var(--highlight-color);
   text-shadow: 0px 0px 10px rgba(255, 223, 0, 1);
   animation: pulse 1.5s infinite alternate;
 }

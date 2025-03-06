@@ -97,7 +97,7 @@
 }
 
 .btn-pin.pinned {
-  background-color: #ffca28;
+  background-color: #ff9800;
   box-shadow: 0px 0px 20px rgba(244, 222, 113, 0.9);
   animation: glowEffect 3s infinite alternate;
 }
@@ -114,7 +114,7 @@
 
 .btn-pin:hover {
   transform: scale(1.2);
-  background-color: #ff9800;
+  background-color: #ff5900;
 }
 
 /* 🗑️ Delete-Post Button */
