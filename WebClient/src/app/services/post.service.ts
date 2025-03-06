@@ -60,9 +60,8 @@ export class PostService {
   }
 
   // Update post
-  updatePost(id: string, post: FormData | Post): Observable<Post> {
-    const headers = post instanceof FormData ? undefined : this.getAuthHeaders();
-    
+  updatePost(id: string, post: Post): Observable<Post> {
+    const headers = this.getAuthHeaders();
     return this.http.put<Post>(`${this.apiBaseUrl}/${id}`, post, { headers })
       .pipe(catchError(this.handleError<Post>('updatePost')));
   }
